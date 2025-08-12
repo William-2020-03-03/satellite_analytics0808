@@ -1,0 +1,10 @@
+@SatelliteAnalytics.API_HostAddress = http://localhost:5288
+@SatelliteAnalytics.API_HostAddress_HTTPS = https://localhost:7159
+
+GET {{SatelliteAnalytics.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+
+### test Top3-module-operation
+GET {{SatelliteAnalytics.API_HostAddress}}/api/SatelliteAnalytics/application/Top3ByModuleAndOperation
+Accept: application/json

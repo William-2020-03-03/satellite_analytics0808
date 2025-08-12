@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36401.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.API", "SatelliteAnalytics.API\SatelliteAnalytics.API.csproj", "{CAF02F97-039B-4B53-9D27-7B4B7F4857C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.Data", "SatelliteAnalytics.Data\SatelliteAnalytics.Data.csproj", "{397730F9-804A-4D72-837C-E2EEBFEFA245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.Services", "SatelliteAnalytics.Services\SatelliteAnalytics.Services.csproj", "{03BC3259-EA9A-41CC-9D6C-0C274823E3C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.Repository", "SatelliteAnalytics.Repository\SatelliteAnalytics.Repository.csproj", "{2EB7C013-06D1-40EB-889D-A5B88FDED0C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.DTO", "SatelliteAnalytics.DTO\SatelliteAnalytics.DTO.csproj", "{D6D7F6A1-840C-4984-AF31-2CD281E496BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAF02F97-039B-4B53-9D27-7B4B7F4857C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAF02F97-039B-4B53-9D27-7B4B7F4857C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAF02F97-039B-4B53-9D27-7B4B7F4857C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAF02F97-039B-4B53-9D27-7B4B7F4857C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{397730F9-804A-4D72-837C-E2EEBFEFA245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{397730F9-804A-4D72-837C-E2EEBFEFA245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{397730F9-804A-4D72-837C-E2EEBFEFA245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{397730F9-804A-4D72-837C-E2EEBFEFA245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03BC3259-EA9A-41CC-9D6C-0C274823E3C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03BC3259-EA9A-41CC-9D6C-0C274823E3C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03BC3259-EA9A-41CC-9D6C-0C274823E3C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03BC3259-EA9A-41CC-9D6C-0C274823E3C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EB7C013-06D1-40EB-889D-A5B88FDED0C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EB7C013-06D1-40EB-889D-A5B88FDED0C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EB7C013-06D1-40EB-889D-A5B88FDED0C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EB7C013-06D1-40EB-889D-A5B88FDED0C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59ACBC5D-BFE6-4CAA-A66E-397F683B65FA}
+	EndGlobalSection
+EndGlobal
