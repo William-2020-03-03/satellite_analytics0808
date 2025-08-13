@@ -1,0 +1,9 @@
+
+
+api:
+dotnet publish -c Release -o C:\SatelliteAnalyticsPublish\api
+
+
+
+angular:
+ng build --configuration production --output-path="C:\SatelliteAnalyticsPublish\ui"
