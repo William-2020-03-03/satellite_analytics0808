@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SatelliteAnalytics.Data;
+using SatelliteAnalytics.Redis;
 using SatelliteAnalytics.Repository;
 using SatelliteAnalytics.Services;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 //    });
 //});
 
+
+
+
+// for redis register
+string redisConnectionString = builder.Configuration.GetConnectionString("Redis");
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+    ConnectionMultiplexer.Connect(redisConnectionString)
+);
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,8 +36,12 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddDbContext();
 builder.Services.AddDbContext<SatelliteAnalyticsDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 builder.Services.AddScoped<IUserOperationLogRepository, UserOperationLogRepository>();
 builder.Services.AddScoped<IUserOperationLogService, UserOperationLogService>();
+builder.Services.AddScoped<IStatsCacheService, StatsCacheService>();
+
+
 
 var app = builder.Build();
 

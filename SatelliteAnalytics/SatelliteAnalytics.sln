@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.Reposito
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.DTO", "SatelliteAnalytics.DTO\SatelliteAnalytics.DTO.csproj", "{D6D7F6A1-840C-4984-AF31-2CD281E496BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SatelliteAnalytics.Redis", "SatelliteAnalytics.Redis\SatelliteAnalytics.Redis.csproj", "{E141E902-2693-435E-A03E-C358DF272174}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6D7F6A1-840C-4984-AF31-2CD281E496BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E141E902-2693-435E-A03E-C358DF272174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E141E902-2693-435E-A03E-C358DF272174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E141E902-2693-435E-A03E-C358DF272174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E141E902-2693-435E-A03E-C358DF272174}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SatelliteAnalytics.Redis\SatelliteAnalytics.Redis.csproj" />
     <ProjectReference Include="..\SatelliteAnalytics.Services\SatelliteAnalytics.Services.csproj" />
   </ItemGroup>
 

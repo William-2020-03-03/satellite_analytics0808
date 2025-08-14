@@ -21,11 +21,18 @@ export class ChartService {
 
     private afterProxy_url = "/api/SatelliteAnalytics/application/Top3ByModuleAndOperation";
 
+    private afterProxy_url_for_redis = "/api/Redis/application/Redis/Top3ByModuleAndOperation";
+
   constructor(private http: HttpClient) {
 
   }
   
   getTop3ByModuleAndOperation(): Observable<Top3ByModuleAndOperation[]> {
     return this.http.get<Top3ByModuleAndOperation[]>(this.afterProxy_url);
+  }
+
+
+  getTop3ByModuleAndOperationFromRedis(): Observable<Top3ByModuleAndOperation[]> {
+    return this.http.get<Top3ByModuleAndOperation[]>(this.afterProxy_url_for_redis);
   }
 }

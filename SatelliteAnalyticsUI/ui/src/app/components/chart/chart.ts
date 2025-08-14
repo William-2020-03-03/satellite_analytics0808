@@ -17,9 +17,19 @@ export class Chart implements OnInit {
     barChartData: ChartConfiguration['data'] = { labels: [], datasets: [] };
 
 
+    barChartData_from_redis: ChartConfiguration['data'] = { labels: [], datasets: [] };
+
+
   constructor(private chartService: ChartService) {}
 
   ngOnInit(): void {
+    this.getData();
+
+    this.getData_from_redis();
+  }
+
+
+  private getData() {
     this.chartService.getTop3ByModuleAndOperation().subscribe( {
       next: (res) => {
         console.log(res);
@@ -44,6 +54,35 @@ export class Chart implements OnInit {
     }
     )
   }
+
+
+  
+  private getData_from_redis() {
+    this.chartService.getTop3ByModuleAndOperationFromRedis().subscribe( {
+      next: (res) => {
+        console.log(res);
+        this.barChartData_from_redis = {
+          labels: res.map(item => `${item.module} - ${item.operation}`),
+          datasets: [
+            {
+              label: 'Count',
+              data: res.map(item => item.count),
+              backgroundColor: [
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(255, 206, 86, 0.6)'
+              ]
+            }
+          ]
+        };
+      },
+      error: (err) => {
+        console.error('请求失败:', err);
+      }
+    }
+    )
+  }
+
 
   // 柱状图配置
   public barChartOptions: ChartConfiguration['options'] = {

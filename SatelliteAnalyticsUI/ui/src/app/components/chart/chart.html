@@ -1,8 +1,21 @@
     
+<div>
     <div style="width: 600px; margin: auto;">
-        <h2>柱状图示例</h2>
+        <h2>From temp - table</h2>
         <canvas baseChart
             [type]="barChartType"
             [data]="barChartData"
             [options]="barChartOptions"></canvas>
     </div>
+
+
+    <div style="width: 600px; margin: auto;">
+        <h2>From redis - cache</h2>
+        <canvas baseChart
+            [type]="barChartType"
+            [data]="barChartData_from_redis"
+            [options]="barChartOptions"></canvas>
+    </div>
+</div>
+
+
