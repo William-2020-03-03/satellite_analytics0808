@@ -28,5 +28,10 @@ namespace SatelliteAnalytics.Services
         {
             return await _repository.GetTop3ByModuleAndOperation();
         }
+
+        public async Task<List<LogAppInfoDTO>> GetBigDataByPaging(int skip, int take)
+        {
+            return await _repository.GetBigDataByPaging(skip, take);
+        }
     }
 }

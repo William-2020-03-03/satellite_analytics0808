@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface Top3ByModuleAndOperation {
-  module: string;
-  operation: string;
-  count: number;
+  Module: string;
+  Operation: string;
+  Count: number;
 }
 
 @Injectable({
@@ -35,4 +35,10 @@ export class ChartService {
   getTop3ByModuleAndOperationFromRedis(): Observable<Top3ByModuleAndOperation[]> {
     return this.http.get<Top3ByModuleAndOperation[]>(this.afterProxy_url_for_redis);
   }
+
+
+
+  //   getTop3ByModuleAndOperation(): Observable<Top3ByModuleAndOperation[]> {
+  //   return this.http.get<Top3ByModuleAndOperation[]>(this.apiUrl);
+  // }
 }

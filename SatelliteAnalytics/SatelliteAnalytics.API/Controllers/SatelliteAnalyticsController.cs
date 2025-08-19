@@ -21,5 +21,12 @@ namespace SatelliteAnalytics.API.Controllers
             var logs = await _service.GetTop3ByModuleAndOperation();
             return Ok(logs);
         }
+
+        [HttpGet("application/GetBigDataByPaging")]
+        public async Task<ActionResult> GetBigDataByPaging(int skip, int take)
+        {
+            var rets = await _service.GetBigDataByPaging(skip,take);
+            return Ok(rets);
+        }
     }
 }

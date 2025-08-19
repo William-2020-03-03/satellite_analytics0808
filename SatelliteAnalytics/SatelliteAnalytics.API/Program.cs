@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SatelliteAnalytics.Data;
 using SatelliteAnalytics.Redis;
 using SatelliteAnalytics.Repository;
@@ -26,6 +26,14 @@ string redisConnectionString = builder.Configuration.GetConnectionString("Redis"
 builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
     ConnectionMultiplexer.Connect(redisConnectionString)
 );
+
+
+// turn off the 'camelCase'
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
+
 
 // Add services to the container.
 builder.Services.AddControllers();

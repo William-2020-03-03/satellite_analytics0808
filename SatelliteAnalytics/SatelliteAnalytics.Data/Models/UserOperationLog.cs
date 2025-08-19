@@ -41,6 +41,13 @@ namespace SatelliteAnalytics.Data.Models
         [Column("browser")]
         public string Browser { get; set; }
 
+        [Required]
+        [Column("created")]
+        public DateTime Created { get; set; }
+
+
+
+
         [ForeignKey("ApplicationId")]
         public ApplicationInfo Application { get; set; }
     }

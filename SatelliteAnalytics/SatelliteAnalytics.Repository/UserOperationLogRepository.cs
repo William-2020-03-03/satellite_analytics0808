@@ -62,5 +62,48 @@ namespace SatelliteAnalytics.Repository
             return null;
         }
 
+
+        public async Task<List<LogAppInfoDTO>> GetBigDataByPaging(int skip = 0, int take=1000)
+        {
+            //var ret1 = this._context.UserOperationLogs.Join(this._context.ApplicationInfos, u => u.ApplicationId, p => p.Id, (u, p) => new LogAppInfoDTO()
+            //{
+            //    Module = u.Module,
+            //    Operation = u.Operation,
+            //    TriggerType = u.TriggerType,
+            //    Browser = u.Browser,
+            //    Build = u.Application.Build,
+            //    Platform = u.Application.Platform,
+            //    Language = u.Application.Language,
+            //})
+            //    .Skip(skip)
+            //    .Take(take)
+            //    .ToList();
+
+
+            //return ret1;
+
+
+            List<LogAppInfoDTO> ret = _context.UserOperationLogs
+                .OrderByDescending (item => item.Created)
+            .Select(u => new LogAppInfoDTO()
+            {
+                Module = u.Module,
+                Operation = u.Operation,
+                TriggerType = u.TriggerType,
+                Browser = u.Browser,
+                Build = u.Application.Build,
+                Platform = u.Application.Platform,
+                Language = u.Application.Language,
+                Created = u.Created,
+            })
+            .Skip(skip)
+            .Take(take)
+            .ToList();
+
+            return ret;
+        }
+
+
+
     }
 }

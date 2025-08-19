@@ -32,13 +32,13 @@ export class Chart implements OnInit {
   private getData() {
     this.chartService.getTop3ByModuleAndOperation().subscribe( {
       next: (res) => {
-        console.log(res);
+        console.log('from database...', res);
         this.barChartData = {
-          labels: res.map(item => `${item.module} - ${item.operation}`),
+          labels: res.map(item => `${item.Module} - ${item.Operation}`),
           datasets: [
             {
               label: 'Count',
-              data: res.map(item => item.count),
+              data: res.map(item => item.Count),
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
                 'rgba(255, 99, 132, 0.6)',
@@ -60,13 +60,13 @@ export class Chart implements OnInit {
   private getData_from_redis() {
     this.chartService.getTop3ByModuleAndOperationFromRedis().subscribe( {
       next: (res) => {
-        console.log(res);
+        console.log('from redis...',res);
         this.barChartData_from_redis = {
-          labels: res.map(item => `${item.module} - ${item.operation}`),
+          labels: res.map(item => `${item.Module} - ${item.Operation}`),
           datasets: [
             {
               label: 'Count',
-              data: res.map(item => item.count),
+              data: res.map(item => item.Count),
               backgroundColor: [
                 'rgba(75, 192, 192, 0.6)',
                 'rgba(255, 99, 132, 0.6)',
