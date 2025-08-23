@@ -7,7 +7,7 @@
   <mat-list>
     <mat-list-item *cdkVirtualFor="let item of userLogAppInfos">
         <div>
-            {{ item.Module}}
+            {{ item.Module}} - {{ item.Operation}} - {{ item.TriggerType }} - {{ item.Browser}} - {{ item.Build}} - {{ item.Platform}} - {{ item.Language}} - {{ item.Created}}
         </div>
     </mat-list-item>
   </mat-list>

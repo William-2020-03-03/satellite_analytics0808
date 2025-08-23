@@ -25,13 +25,19 @@ export class BigData implements OnInit {
   }
 
 
+
   loadData(): void {
      this.loading = true;
+     const start = Date.now();
 
     this.bigDataService.loadData(this.skip, this.batchSize).subscribe({
       next: (res) => {
         this.userLogAppInfos = [...this.userLogAppInfos, ...res];
         this.loading = false;
+
+        const end = Date.now();
+
+        console.log(`total time (mill seconds):  ${end - start}`);
       },
       error: (err) => {
         console.error('request failed:', err);
@@ -45,6 +51,7 @@ export class BigData implements OnInit {
     if (index + this.batchSize >= this.userLogAppInfos.length && !this.loading && this.userLogAppInfos.length < this.maxRecords) {
           console.log("...index....", index);
       this.skip += this.batchSize;
+
       this.loadData();
     }
   }

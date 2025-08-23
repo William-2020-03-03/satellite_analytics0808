@@ -4,6 +4,7 @@ using SatelliteAnalytics.Data.Models;
 using SatelliteAnalytics.DTO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,7 +84,11 @@ namespace SatelliteAnalytics.Repository
             //return ret1;
 
 
+            //Stopwatch sw = new Stopwatch();
+            //sw.Start();
+
             List<LogAppInfoDTO> ret = _context.UserOperationLogs
+                .AsNoTracking()
                 .OrderByDescending (item => item.Created)
             .Select(u => new LogAppInfoDTO()
             {
@@ -99,6 +104,13 @@ namespace SatelliteAnalytics.Repository
             .Skip(skip)
             .Take(take)
             .ToList();
+
+            //sw.Stop();
+            //double ms = sw.ElapsedTicks / (double) Stopwatch.Frequency * 1000;
+            //Console.WriteLine($"ms value: {ms}");
+            //Console.WriteLine($"function execution time: {ms:F3} ms");
+
+            //this._context.ChangeTracker.Clear();
 
             return ret;
         }
