@@ -41,16 +41,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+////builder.Services.AddDbContext();
+//builder.Services.AddDbContext<SatelliteAnalyticsDBContext>(options => options
+//.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 //builder.Services.AddDbContext();
 builder.Services.AddDbContext<SatelliteAnalyticsDBContext>(options => options
-.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Transient);
 
 ////builder.Services.AddDbContext();
 //builder.Services.AddDbContext<SatelliteAnalyticsDBContext>(options => options
 //.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 //.LogTo(Console.WriteLine, LogLevel.Debug)
-//.EnableSensitiveDataLogging());
+//.EnableSensitiveDataLogging(), ServiceLifetime.Transient);
 
 
 builder.Services.AddScoped<IUserOperationLogRepository, UserOperationLogRepository>();

@@ -30,9 +30,12 @@ export class Chart implements OnInit {
 
 
   private getData() {
+        const start = Date.now();
+        
     this.chartService.getTop3ByModuleAndOperation().subscribe( {
       next: (res) => {
-        console.log('from database...', res);
+             const end = Date.now();
+       console.log(`From DB - total time (mill seconds):  ${end - start}`);
         this.barChartData = {
           labels: res.map(item => `${item.Module} - ${item.Operation}`),
           datasets: [
@@ -58,9 +61,13 @@ export class Chart implements OnInit {
 
   
   private getData_from_redis() {
+         const start = Date.now();
+
     this.chartService.getTop3ByModuleAndOperationFromRedis().subscribe( {
       next: (res) => {
-        console.log('from redis...',res);
+             const end = Date.now();
+       console.log(`From redis - total time (mill seconds):  ${end - start}`);
+
         this.barChartData_from_redis = {
           labels: res.map(item => `${item.Module} - ${item.Operation}`),
           datasets: [

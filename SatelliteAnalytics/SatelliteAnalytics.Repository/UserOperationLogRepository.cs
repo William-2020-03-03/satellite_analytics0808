@@ -84,31 +84,59 @@ namespace SatelliteAnalytics.Repository
             //return ret1;
 
 
-            //Stopwatch sw = new Stopwatch();
-            //sw.Start();
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
 
-            List<LogAppInfoDTO> ret = _context.UserOperationLogs
-                .AsNoTracking()
-                .OrderByDescending (item => item.Created)
-            .Select(u => new LogAppInfoDTO()
-            {
-                Module = u.Module,
-                Operation = u.Operation,
-                TriggerType = u.TriggerType,
-                Browser = u.Browser,
-                Build = u.Application.Build,
-                Platform = u.Application.Platform,
-                Language = u.Application.Language,
-                Created = u.Created,
-            })
-            .Skip(skip)
-            .Take(take)
-            .ToList();
+            //List<LogAppInfoDTO> ret = _context.UserOperationLogs
+            //    .AsNoTracking()
+            //    .OrderByDescending (item => item.Created)
+            //.Select(u => new LogAppInfoDTO()
+            //{
+            //    Module = u.Module,
+            //    Operation = u.Operation,
+            //    TriggerType = u.TriggerType,
+            //    Browser = u.Browser,
+            //    Build = u.Application.Build,
+            //    Platform = u.Application.Platform,
+            //    Language = u.Application.Language,
+            //    Created = u.Created,
+            //})
+            //.Skip(skip)
+            //.Take(take)
+            //.ToList();
 
-            //sw.Stop();
-            //double ms = sw.ElapsedTicks / (double) Stopwatch.Frequency * 1000;
-            //Console.WriteLine($"ms value: {ms}");
-            //Console.WriteLine($"function execution time: {ms:F3} ms");
+            // 每次查询前清理缓存（测试用）- can't publish, because satellite_user has no perssion for below, not sysadmin
+            //_context.Database.ExecuteSqlRaw("DBCC DROPCLEANBUFFERS");
+            //_context.Database.ExecuteSqlRaw("DBCC FREEPROCCACHE");
+
+            var compiledQuery = EF.CompileQuery(
+                (SatelliteAnalyticsDBContext context, int skip, int take) =>
+                    context.UserOperationLogs
+                        .AsNoTracking()
+                        .OrderByDescending(item => item.Created)
+                        .Select(u => new LogAppInfoDTO
+                        {
+                            Module = u.Module,
+                            Operation = u.Operation,
+                            TriggerType = u.TriggerType,
+                            Browser = u.Browser,
+                            Build = u.Application.Build,
+                            Platform = u.Application.Platform,
+                            Language = u.Application.Language,
+                            Created = u.Created,
+                        })
+                        .Skip(skip)
+                        .Take(take)
+            );
+
+            List<LogAppInfoDTO> ret = compiledQuery(_context, skip, take).ToList();
+
+
+
+            sw.Stop();
+            double ms = sw.ElapsedTicks / (double)Stopwatch.Frequency * 1000;
+            Console.WriteLine($"ms value: {ms}");
+            Console.WriteLine($"function execution time: {ms:F3} ms");
 
             //this._context.ChangeTracker.Clear();
 
